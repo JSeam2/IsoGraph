@@ -18,17 +18,25 @@ ______________________________________
 """
 
 import numpy as np
-import scipy as sp
 import networkx as nx
+from networkx.algorithms import isomorphism
 
 
-# generate isomorphic graphs
-def gen_isograph(n):
+def gen_rnd_graph(n):
     """
-    Get no. of nodes as input
-    Generate pairs of isomorphic graphs
-    Verify the isomorphic graphs
-    IOutput the isomorphic graphs adjacency matrix
+    Generate a random pair of isomorphic graphs as adjacency matrices
+    Adjacency matrices are numpy arrays
+
+    n gives the total number of nodes in the graph
+
+    If graphs are isomorphic:
+        put 1 in the Is Isomorphic column
+
+    else:
+        put 0 in the Is Isomorphic column
+
+    output the | Graph_1 | Graph_2 |
+    Output the isomorphic graphs adjacency matrix
 
     Some mathematical definition:
     G ≅ H (G is isomorphic to H)
@@ -47,22 +55,35 @@ def gen_isograph(n):
     output:
         numpy matrix
     """
-    # Generate random graph, G1 and convert to numpy matrix
+
+    # Generate random graph, G1
     G1 = nx.dense_gnm_random_graph(n, n)
-    G1_numpy = to_numpy_matrix(G1)
 
-    # Generate random graph, G2 and convert to numpy matrix
+    # Generate random graph, G2
     G2 = nx.dense_gnm_random_graph(n, n)
-    G2_numpy = to_numpy_matrix(G2)
 
-    # Combine the matrices together
-    Gall = 
+    # Check if graphs are isomorphic
+    GM = isomorphism.GraphMatcher(G1, G2)
+
+    # Check if graphs are isomorphic
+    if GM.is_isomorphic() == True:
+        is_GM_isomorphic = 1
+
+    else:
+        is_GM_isomorphic = 0
+
+    # Convert graphs to numpy matrix
+    G1_numpy = nx.to_numpy_matrix(G1)
+    G2_numpy = nx.to_numpy_matrix(G2)
+
+    # Combine the G1_numpy and G2_numpy and is_GM_isomorphic
 
 
     # after creating the graph need find a way to find an isomorphic graph to
     # this randomly generating graphs won't allow you to find isomorphic pairs
 
-    return graph
+    # temporary return for checking
+    return is_GM_isomorphic
 
 
 def save_graph(graph):
@@ -72,9 +93,15 @@ def save_graph(graph):
     """
     pass
 
-
 if __name__ == "__main__":
+    count = 0
+    for x in range (100000):
+        a = gen_rnd_graph(10)
+        if a == 1:
+            count += 1
 
-    
+    print("{} isomorphic graphs found".format(count))
+        #print(gen_rnd_graph(10))
+
     # ignore anything below 3 nodes
     # num_nodes = [x for x in range(3, 21)]
