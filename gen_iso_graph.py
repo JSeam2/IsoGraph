@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Generate adjacency matrices of isomorphic graphs
 
@@ -17,10 +18,11 @@ ______________________________________
 
 """
 
+import os
 import numpy as np
 import networkx as nx
 from networkx.algorithms import isomorphism
-
+import sqlite3
 
 def gen_rnd_graph(n):
     """
@@ -39,7 +41,7 @@ def gen_rnd_graph(n):
     Output the isomorphic graphs adjacency matrix
 
     Some mathematical definition:
-    G ≅ H (G is isomorphic to H)
+     G ≅ H (G is isomorphic to H)
 
     iff ∃ a: V(G)→ V(H)    (A bijection)
     such that
@@ -49,11 +51,11 @@ def gen_rnd_graph(n):
     for some permutation matrix P,
     G ≅ H  ↔ A_G = P* A_H *P_transpose
 
-    param:
+    :param:
         nodes(int): number of node
 
-    output:
-        numpy matrix
+    :returns:
+        tuple (graph1(numpy), graph2(numpy), is_isomorphic(int))
     """
 
     # Generate random graph, G1
@@ -76,32 +78,45 @@ def gen_rnd_graph(n):
     G1_numpy = nx.to_numpy_matrix(G1)
     G2_numpy = nx.to_numpy_matrix(G2)
 
-    # Combine the G1_numpy and G2_numpy and is_GM_isomorphic
+    return (G1_numpy, G2_numpy, is_GM_isomorphic)
 
 
-    # after creating the graph need find a way to find an isomorphic graph to
-    # this randomly generating graphs won't allow you to find isomorphic pairs
-
-    # temporary return for checking
-    return is_GM_isomorphic
-
-
-def save_graph(graph):
+def save_graph(nodes, num_graph, db_path = "./graph.db" ):
     """
-    save the graphs in to a npz file
-    label it respectively and place it into a ./isomorphic graphs folder
+    Looks for graph.db, creates graph.db if it doesn't exist
+    Run gen_rnd_graph(nodes), creates up till the nodes in parameters. Doesn't create for 3 nodes and below.
+    and store it with sqlite3
+
+
+    :param: nodes := number of nodes the database will make until(int)
+    :param: num_graph := number of graphs to generate (int)
+    :param: db_path := path of sqlite3 db, default is same directory as gen_iso_graph.py
     """
-    pass
+
+    # in event connection to database is not possible put None
+    conn = None
+
+    # connect to db path
+    # will make sql database if it doesn't exist
+    conn = sqlite3.connect(db_path)
+
+    with conn:
+        # 1st loop to make various tables with various nodes x
+        # 2nd loop to make insert gen_rnd_graph entries with nodes x
+        for x in range(3,nodes):
+            cur = conn.cursor()
+            # Create Table
+            cur.execute("CREATE TABLE IF NOT EXISTS Node_{} (Id INT, Graph1 Bl, Graph2 BLOB, is_isomorphic INT)".format(str(x)))
+
+            for num in range(num_graph):
+                g1, g2 , is_isomorphic = gen_rnd_graph(x)
+
+                # Convert np tostring
+                # To retrieve back using np.fromstring(bytearray)
+                cur.execute("INSERT INTO Node_{} VALUES(?,?,?,?)".format(str(x))
+                            ,(num, g1.tostring(), g2.tostring(), is_isomorphic))
+
+        conn.commit()
 
 if __name__ == "__main__":
-    count = 0
-    for x in range (100000):
-        a = gen_rnd_graph(10)
-        if a == 1:
-            count += 1
-
-    print("{} isomorphic graphs found".format(count))
-        #print(gen_rnd_graph(10))
-
-    # ignore anything below 3 nodes
-    # num_nodes = [x for x in range(3, 21)]
+    save_graph(10, 3)

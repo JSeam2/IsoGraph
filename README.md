@@ -1,6 +1,6 @@
 # IsoGraph
 Generate the adjacency matrices of Isomorphic Graphs and Non-isomorphic graphs.
-The adjacency matrices are stored as numpy arrays for further use.
+The adjacency matrices are stored as numpy arrays in sqlite3 database for further use.
 
 The original intention for use was for an experiment which sought to simulate
 the implementation of a quantum machine learning algorithm on a classical/"normal"
