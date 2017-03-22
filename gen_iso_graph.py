@@ -105,8 +105,9 @@ def save_graph(nodes, num_graph, db_path = "./graph.db" ):
         # 2nd loop to make insert gen_rnd_graph entries with nodes x
         for x in range(3,nodes):
             cur = conn.cursor()
-            # Create Table
-            cur.execute("CREATE TABLE IF NOT EXISTS Node_{} (Id INT, Graph1 Bl, Graph2 BLOB, is_isomorphic INT)".format(str(x)))
+            # Create Table this string formatting of a SQL command is generally
+            # bad but we can make do with this for now.
+            cur.execute("CREATE TABLE IF NOT EXISTS Node_{} (Id INT, Graph1 BLOB, Graph2 BLOB, is_isomorphic INT)".format(str(x)))
 
             for num in range(num_graph):
                 g1, g2 , is_isomorphic = gen_rnd_graph(x)
@@ -119,4 +120,4 @@ def save_graph(nodes, num_graph, db_path = "./graph.db" ):
         conn.commit()
 
 if __name__ == "__main__":
-    save_graph(10, 3)
+    save_graph(10, 20000, "./graph.db")
