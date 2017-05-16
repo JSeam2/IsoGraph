@@ -24,7 +24,7 @@ import networkx as nx
 from networkx.algorithms import isomorphism
 import sqlite3
 
-def gen_rnd_graph(n):
+def gen_rnd_graph(n, mode="dense"):
     """
     Generate a random pair of isomorphic graphs as adjacency matrices
     Adjacency matrices are numpy arrays
@@ -53,22 +53,33 @@ def gen_rnd_graph(n):
 
     :param:
         nodes(int): number of node
+        mode(str) : 'dense' to generate dense graph
+                    'sparse' for sparse graph
 
     :returns:
         tuple (graph1(numpy), graph2(numpy), is_isomorphic(int))
     """
 
-    # Generate random graph, G1
-    G1 = nx.dense_gnm_random_graph(n, n)
+    if mode == 'dense':
+        # Generate random graph, G1
+        G1 = nx.dense_gnm_random_graph(n, n)
 
-    # Generate random graph, G2
-    G2 = nx.dense_gnm_random_graph(n, n)
+        # Generate random graph, G2
+        G2 = nx.dense_gnm_random_graph(n, n)
+
+    # This might not really be sparse
+    elif mode == 'sparse':
+        G1 = nx.gnm_random_graph(n, n)
+        G2 = nx.gnm_random_graph(n, n)
+
+    else:
+        return 'Invalid Mode'
 
     # Check if graphs are isomorphic
     GM = isomorphism.GraphMatcher(G1, G2)
 
     # Check if graphs are isomorphic
-    if GM.is_isomorphic() == True:
+    if GM.is_isomorphic():
         is_GM_isomorphic = 1
 
     else:
@@ -118,6 +129,12 @@ def save_graph(nodes, num_graph, db_path = "./graph.db" ):
                             ,(num, g1.tostring(), g2.tostring(), is_isomorphic))
 
         conn.commit()
-
+jkj
 if __name__ == "__main__":
-    save_graph(10, 20000, "./graph.db")
+    #save_graph(10, 20000, "./graph.db")
+    A,B,C = (gen_rnd_graph(3,mode='sparse'))
+    print(A)
+    print()
+    print(B)
+    print()
+    print(C)
