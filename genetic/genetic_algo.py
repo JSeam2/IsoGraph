@@ -8,7 +8,7 @@ import numpy as np
 # CZ = "CSIGN"
 # RZ = "RZ"
 
-def make_circuit(theta_val):
+def make_circuit(theta_val, save_image = False):
     """
     Input theta values to create quantum circuit
     [layer 1], [layer 2]. so on
@@ -21,8 +21,6 @@ def make_circuit(theta_val):
     """
     qc = QubitCircuit(N = len(theta_val[0]))
 
-    print(len(theta_val))
-    print(len(theta_val[0]))
     for i in range(len(theta_val)):
         # ADD H gates
         qc.add_1q_gate("SNOT", start = 0, end = qc.N)
@@ -39,7 +37,8 @@ def make_circuit(theta_val):
                         controls = [len(theta_val[0]) - 1])
 
     # produce image
-    qc.png
+    if save_image:
+        qc.png
 
     return qc.propagators()
 
