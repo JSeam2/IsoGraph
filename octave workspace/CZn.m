@@ -26,13 +26,13 @@ elseif n == 3
   CZn += kron(d1,d0,eye(2));
   CZn += kron(d1,d1,Z);
     
-elseif n == 4
+elseif n == 4 
   CZn += kron(d1,d0,eye(2^(n-2)));
   CZn += kron(d1,d1,d0,eye(2^(n-3)));
   CZn += kron(d1,d1,d1,Z);
 
 elseif n == 5
-  CZn += kron(d1,d0,eye(2^(n-2)));
+  CZn += kron(d1,d0,eye(2^(n-2)));  
   CZn += kron(d1,d1,d0,eye(2^(n-3)));
   CZn += kron(d1,d1,d1,d0,eye(2^(n-4)));
   CZn += kron(d1,d1,d1,d1,Z);
