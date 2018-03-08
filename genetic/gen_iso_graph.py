@@ -104,14 +104,14 @@ if __name__ == "__main__":
     G1 = []
     G2 = []
     is_iso = []
+
     for i in range(30000):
         A,B,C = (gen_rnd_graph(N, mode='binomial'))
         G1.append(A)
         G2.append(B)
         is_iso.append(C)
 
-
     df = pandas.DataFrame(data = {"G1" : G1, "G2" : G2, "is_iso" : is_iso})
-    df.to_pickle("{}_node.pkl".format(N))
+    df.to_pickle("{}_node_adjacency.pkl".format(N))
 
 
