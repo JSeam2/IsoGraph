@@ -68,45 +68,65 @@ def generate_initial_population(N, population_size = 100, depth = 10):
     return genes
 
 
-def get_fitness(genes, data):
+def get_fitness(gene, data):
     """
-    Pass in genes and run through the various isomorphic graphs
+    Pass in gene and run through the various isomorphic graphs
 
-    genes: list of np array
+    gene: np array
     data: panda dataframe from pkl file
     """
+    # total number of sampeles
+    num_sample = data.shape[0]
+
     # select upper diagonal ignoring zeros in the middle
     size = data["G1"][0].shape[0]
     upper = np.triu_indices(size, 1)
 
-    # create projector
-    acc = identity(2)
+    # create projector we project to 0 standard basis
+    projector = basis(2,0) * basis(2,0).dag()
 
-    for i in range(size - 2):
-        acc = tensor(acc, identity(2))
+    for i in range((size * 2) - 1):
+        projector = tensor(projector, identity(2))
 
-    # we project to 0 basis
-    projector = tensor(acc, basis(2,0) * basis(2,0).dag())
+    print(projector)
 
-    for gene in genes:
-        # make circuit using the genes
-        circuit = make_circuit(gene)
+    # make circuit using the genes
+    circuit = make_circuit(gene)
 
-        for index, row in df.iterrows():
-            combined = row["G1"][upper].tolist()[0] + row["G2"][upper].tolist()[0]
-            int_comb = [int(i) for i in comb]
-            inputval = bra(int_comb)
-            result = inputval * circuit
-            density = result * result.dag()
+    loss = 0
 
-            # compare this expectation with result 
-            expectation = expect(projector, density)
+    for index, row in data.iterrows():
+        if index % 1000 == 0:
+            print("running {}".format(index))
+
+        combined = row["G1"][upper].tolist()[0] + row["G2"][upper].tolist()[0]
+        int_comb = [int(i) for i in comb]
+        inputval = bra(int_comb)
+        result = inputval * circuit
+        density = result.dag() * result
+
+        # We will use the logisitc regression loss function
+        # as we are dealing with a classification problem
+        # compare this expectation with result 
+        # expectation here refers to the likelihood of getting 0
+        expectation = expect(projector, density)
+        actual = row["is_iso"]
+
+        loss += -1 * actual * np.log(1 - expectation) \
+                - (1 - actual) * np.log(expectation)
 
 
-class Chromosomes(object):
+    ave_loss = loss/num_sample
+
+    return ave_loss
+
+
+
+class Chromosomes:
     def __init__(self, genes, fitness):
         self.genes = genes
         self.fitness = fitness
+
 
 
 if __name__ == "__main__":
@@ -120,14 +140,16 @@ if __name__ == "__main__":
 
     theta = np.random.uniform(-np.pi, np.pi, [2, 3*2])
 
-    circuit = make_circuit(theta)
-    inputval = bra(int_comb)
-    result = inputval* circuit
-    density = result.dag() * result
+    print(get_fitness(theta, df))
 
-    projector = tensor(identity(2), identity(2), identity(2), identity(2),
-                       identity(2),
-                       basis(2,0) * basis(2,0).dag())
+    #circuit = make_circuit(theta)
+    #inputval = bra(int_comb)
+    #result = inputval* circuit
+    #density = result.dag() * result
 
-    expectation = expect(projector, density)
-    print(expectation)
+    ## wait a minute is this the right side?
+    #projector = tensor(basis(2,0) * basis(2,0).dag(), identity(2), identity(2),
+    #                   identity(2), identity(2), identity(2))
+
+    #expectation = expect(projector, density)
+    #print(expectation)
