@@ -105,7 +105,7 @@ if __name__ == "__main__":
     G2 = []
     is_iso = []
 
-    for i in range(30000):
+    for i in range(10000):
         A,B,C = (gen_rnd_graph(N, mode='binomial'))
         G1.append(A)
         G2.append(B)
