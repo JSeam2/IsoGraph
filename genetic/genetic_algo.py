@@ -10,6 +10,8 @@ import pandas as pd
 from functools import reduce
 import datetime
 import time
+import pickle
+import copy
 
 
 # QUTIP NOTES
@@ -95,18 +97,22 @@ def generate_children(parent, data, take_best,
         # crossover the gene at a random point
         rand_point = random.randint(0, parentA_gene.shape[0])
 
-        if parentB_gene.shape[0] < rand_point:
-            child_gene = np.vstack((parentA_gene[0:rand_point],
-                                    parentB_gene[rand_point, parentB_gene.shape[0]]))
-
-        else :
-            child_gene = parentA_gene
-
         if random.random() <= mutation_rate:
+            # Crossover
+            if parentB_gene.shape[0] < rand_point:
+                child_gene = np.vstack((parentA_gene[0:rand_point],
+                                        parentB_gene[rand_point, parentB_gene.shape[0]]))
+
+            else :
+                child_gene = parentA_gene
+
             # randomly change values in the array
             mask = np.random.randint(0,2,size=child_gene.shape).astype(np.bool)
             r = np.random.uniform(-np.pi, np.pi, size = child_gene.shape)
             child_gene[mask] = r[mask]
+
+        else:
+            child_gene = parentA_gene
 
         child_genes.append(child_gene)
 
@@ -148,8 +154,8 @@ def get_fitness(genes, data):
         circuit = make_circuit(gene)
 
         for index, row in data.iterrows():
-            if index % 2500 == 0:
-                print("running {}".format(index))
+            #if index % 2500 == 0:
+            #    print("running {}".format(index))
 
             combined = row["G1"][upper].tolist()[0] + row["G2"][upper].tolist()[0]
             int_comb = [int(i) for i in combined]
@@ -211,6 +217,7 @@ def get_best(N, data, num_epoch = 10,
 
     parent = generate_initial_population(N, data, population_size, depth)
     parent.sort()
+    print("Seed Population")
     display(parent)
 
     # take best
@@ -220,9 +227,22 @@ def get_best(N, data, num_epoch = 10,
                                   mutation_rate)
         child.sort()
         print()
+        print("Child")
         print("Epoch {}".format(i))
         display(child)
-        parent = child
+
+        # if the parent best fitness is greater than child.fitness get the
+        # let the child be the parent to get next generation
+        if parent.fitness[0] > child.fitness[0]:
+            parent = copy.deepcopy(child)
+            print("Parent is now the child, New Parent:")
+            display(parent)
+
+        else:
+            print("Parent retained, Current Parent:")
+            display(parent)
+
+    return parent.genes
 
 
 class PopulationPool:
@@ -246,6 +266,7 @@ class PopulationPool:
 
 
 if __name__ == "__main__":
+    print("Start Program")
     df = pd.read_pickle("3_node_10000.pkl")
     #initial_genes = generate_initial_population(N = 3, population_size = 2)
 
@@ -260,7 +281,7 @@ if __name__ == "__main__":
     #print(get_fitness([theta], df))
     #print("Time taken: {}".format(time.time()- start))
 
-    #circuit = make_circuit(theta)
+    #circuit = make_circuit(theta, True)
     #inputval = bra(int_comb)
     #result = inputval* circuit
     #density = result.dag() * result
@@ -272,4 +293,19 @@ if __name__ == "__main__":
     #expectation = expect(projector, density)
     #print(expectation)
 
-    get_best(N=3, data = df, num_epoch = 10, population_size = 10, take_best = 5, depth=10)
+    out_genes = get_best(N=3,
+             data = df,
+             num_epoch = 100,
+             population_size = 20,
+             take_best = 5,
+             depth = 15,
+             mutation_rate = 0.05)
+
+    with open("save.pkl", "wb") as f:
+        pickle.dump(out_genes,f)
+
+    # to open 
+    #with open("save.pkl", "rb") as f:
+    #    save_genes = pickle.load(f)
+
+    #print(get_fitness(save_genes, df)) 
