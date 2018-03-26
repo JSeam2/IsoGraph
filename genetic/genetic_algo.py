@@ -148,8 +148,8 @@ def get_fitness(genes, data):
         circuit = make_circuit(gene)
 
         for index, row in data.iterrows():
-            if index % 2500 == 0:
-                print("running {}".format(index))
+            #if index % 2500 == 0:
+            #    print("running {}".format(index))
 
             combined = row["G1"][upper].tolist()[0] + row["G2"][upper].tolist()[0]
             int_comb = [int(i) for i in combined]
@@ -272,4 +272,5 @@ if __name__ == "__main__":
     #expectation = expect(projector, density)
     #print(expectation)
 
-    get_best(N=3, data = df, num_epoch = 10, population_size = 10, take_best = 5, depth=10)
+    get_best(N=3, data = df, num_epoch = 20, population_size = 20,
+             take_best = 5, depth=10, mutation_rate = 0.01)
