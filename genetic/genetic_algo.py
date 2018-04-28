@@ -47,7 +47,10 @@ def make_circuit(theta_val, save_image = False):
         for k in range(len(theta_val[0]) - 1):
             qc.add_gate("CSIGN",
                         targets = [k],
-                        controls = [len(theta_val[0]) - 1])
+                        controls = [k+1])
+
+    # add a hadamard at the end
+    qc.add_1q_gate("SNOT", start = 0, end = qc.N)
 
     # produce image
     if save_image:
@@ -67,7 +70,8 @@ def generate_initial_population(N, data, population_size = 20, depth = 5):
     """
     genes = []
     while len(genes) < population_size:
-        genes.append(np.random.uniform(-np.pi, np.pi, [depth, N*2]))
+        # we add a +1 to the circuit as use a |0> qubit for measurement
+        genes.append(np.random.uniform(-np.pi, np.pi, [depth, N*2 + 1]))
 
     fitness, acc = get_fitness(genes, data)
 
@@ -121,6 +125,15 @@ def generate_children(parent, data, take_best,
     return PopulationPool(child_genes, fitness, acc)
 
 
+def evaluate(input_str, circuit):
+    """
+    Evaluate input sequence of bits
+    Include an additional ancilla qubit in input
+    for measurement
+    """
+    pass
+
+
 def get_fitness(genes, data):
     """
     Pass in gene and run through the various isomorphic graphs
@@ -130,7 +143,7 @@ def get_fitness(genes, data):
 
     returns list of fitness
     """
-    # total number of sampeles
+    # total number of samples
     num_sample = data.shape[0]
 
     # select upper diagonal ignoring zeros in the middle
@@ -151,13 +164,19 @@ def get_fitness(genes, data):
         correct = 0
 
         # make circuit using the genes
-        circuit = make_circuit(gene)
+        circuit = make_circuit(gene, True)
 
         for index, row in data.iterrows():
             #if index % 2500 == 0:
             #    print("running {}".format(index))
 
-            combined = row["G1"][upper].tolist()[0] + row["G2"][upper].tolist()[0]
+            # add a |0> to the last qubit as we will use
+            # it for measurements
+            combined = row["G1"][upper].tolist()[0] + \
+            row["G2"][upper].tolist()[0]
+
+            combined.append("0")
+
             int_comb = [int(i) for i in combined]
             inputval = bra(int_comb)
             result = inputval * circuit
@@ -268,44 +287,44 @@ class PopulationPool:
 if __name__ == "__main__":
     print("Start Program")
     df = pd.read_pickle("3_node_10000.pkl")
-    #initial_genes = generate_initial_population(N = 3, population_size = 2)
 
-    #upper = np.triu_indices(3, 1)
+    #out_genes = get_best(N=3,
+    #         data = df,
+    #         num_epoch = 100,
+    #         population_size = 20,
+    #         take_best = 5,
+    #         depth = 15,
+    #         mutation_rate = 0.05)
 
-    #comb = df["G1"][0][upper].tolist()[0] + df["G2"][0][upper].tolist()[0]
-    #int_comb = [int(i) for i in comb]
-
-    #theta = np.random.uniform(-np.pi, np.pi, [2, 3*2])
-
-    #start = time.time()
-    #print(get_fitness([theta], df))
-    #print("Time taken: {}".format(time.time()- start))
-
-    #circuit = make_circuit(theta, True)
-    #inputval = bra(int_comb)
-    #result = inputval* circuit
-    #density = result.dag() * result
-
-    ## wait a minute is this the right side?
-    #projector = tensor(basis(2,0) * basis(2,0).dag(), identity(2), identity(2),
-    #                   identity(2), identity(2), identity(2))
-
-    #expectation = expect(projector, density)
-    #print(expectation)
-
-    out_genes = get_best(N=3,
-             data = df,
-             num_epoch = 100,
-             population_size = 20,
-             take_best = 5,
-             depth = 15,
-             mutation_rate = 0.05)
-
-    with open("save.pkl", "wb") as f:
-        pickle.dump(out_genes,f)
+    #with open("save.pkl", "wb") as f:
+    #    pickle.dump(out_genes,f)
 
     # to open 
     #with open("save.pkl", "rb") as f:
     #    save_genes = pickle.load(f)
 
-    #print(get_fitness(save_genes, df)) 
+    # total number of samples
+    num_sample = df.shape[0]
+
+    # select upper diagonal ignoring zeros in the middle
+    size = df["G1"][0].shape[0]
+    upper = np.triu_indices(size, 1)
+
+    # create projector we project to 0 standard basis
+    projector = basis(2,0) * basis(2,0).dag()
+
+    for i in range((size * 2) - 1):
+        projector = tensor(projector, identity(2))
+
+    fitness_list = []
+    acc_list = []
+
+    parent = generate_initial_population(3, df, 2, 3)
+
+    for gene in parent:
+        loss = 0
+        correct = 0
+
+        # make circuit using the genes
+        circuit = make_circuit(gene, True)
+        break
