@@ -153,7 +153,7 @@ def get_fitness(genes, data):
     # create projector we project to 0 standard basis
     projector = basis(2,0) * basis(2,0).dag()
 
-    for i in range((size * 2) - 1):
+    for i in range(size * 2):
         projector = tensor(projector, identity(2))
 
     fitness_list = []
@@ -164,11 +164,11 @@ def get_fitness(genes, data):
         correct = 0
 
         # make circuit using the genes
-        circuit = make_circuit(gene, True)
+        circuit = make_circuit(gene, False)
 
         for index, row in data.iterrows():
-            #if index % 2500 == 0:
-            #    print("running {}".format(index))
+            if index % 2500 == 0:
+                print("running {}".format(index))
 
             # add a |0> to the last qubit as we will use
             # it for measurements
@@ -288,43 +288,43 @@ if __name__ == "__main__":
     print("Start Program")
     df = pd.read_pickle("3_node_10000.pkl")
 
-    #out_genes = get_best(N=3,
-    #         data = df,
-    #         num_epoch = 100,
-    #         population_size = 20,
-    #         take_best = 5,
-    #         depth = 15,
-    #         mutation_rate = 0.05)
+    out_genes = get_best(N=3,
+             data = df,
+             num_epoch = 100,
+             population_size = 20,
+             take_best = 5,
+             depth = 15,
+             mutation_rate = 0.05)
 
-    #with open("save.pkl", "wb") as f:
-    #    pickle.dump(out_genes,f)
+    with open("save.pkl", "wb") as f:
+        pickle.dump(out_genes,f)
 
     # to open 
     #with open("save.pkl", "rb") as f:
     #    save_genes = pickle.load(f)
 
     # total number of samples
-    num_sample = df.shape[0]
+    #num_sample = df.shape[0]
 
-    # select upper diagonal ignoring zeros in the middle
-    size = df["G1"][0].shape[0]
-    upper = np.triu_indices(size, 1)
+    ## select upper diagonal ignoring zeros in the middle
+    #size = df["G1"][0].shape[0]
+    #upper = np.triu_indices(size, 1)
 
-    # create projector we project to 0 standard basis
-    projector = basis(2,0) * basis(2,0).dag()
+    ## create projector we project to 0 standard basis
+    #projector = basis(2,0) * basis(2,0).dag()
 
-    for i in range((size * 2) - 1):
-        projector = tensor(projector, identity(2))
+    #for i in range((size * 2) - 1):
+    #    projector = tensor(projector, identity(2))
 
-    fitness_list = []
-    acc_list = []
+    #fitness_list = []
+    #acc_list = []
 
-    parent = generate_initial_population(3, df, 2, 3)
+    #parent = generate_initial_population(3, df, 2, 3)
 
-    for gene in parent:
-        loss = 0
-        correct = 0
+    #for gene in parent:
+    #    loss = 0
+    #    correct = 0
 
-        # make circuit using the genes
-        circuit = make_circuit(gene, True)
-        break
+    #    # make circuit using the genes
+    #    circuit = make_circuit(gene, True)
+    #    break
