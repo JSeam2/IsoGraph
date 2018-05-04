@@ -293,10 +293,54 @@ if __name__ == "__main__":
              num_epoch = 100,
              population_size = 20,
              take_best = 5,
+             depth = 10,
+             mutation_rate = 0.05)
+
+    with open("save1.pkl", "wb") as f:
+        pickle.dump(out_genes,f)
+
+    out_genes = get_best(N=3,
+             data = df,
+             num_epoch = 100,
+             population_size = 20,
+             take_best = 5,
              depth = 15,
              mutation_rate = 0.05)
 
-    with open("save.pkl", "wb") as f:
+    with open("save2.pkl", "wb") as f:
+        pickle.dump(out_genes,f)
+
+    out_genes = get_best(N=3,
+             data = df,
+             num_epoch = 100,
+             population_size = 20,
+             take_best = 5,
+             depth = 20,
+             mutation_rate = 0.05)
+
+    with open("save3.pkl", "wb") as f:
+        pickle.dump(out_genes,f)
+
+    out_genes = get_best(N=3,
+             data = df,
+             num_epoch = 100,
+             population_size = 20,
+             take_best = 5,
+             depth = 25,
+             mutation_rate = 0.05)
+
+    with open("save4.pkl", "wb") as f:
+        pickle.dump(out_genes,f)
+
+    out_genes = get_best(N=3,
+             data = df,
+             num_epoch = 100,
+             population_size = 20,
+             take_best = 5,
+             depth = 30,
+             mutation_rate = 0.05)
+
+    with open("save5.pkl", "wb") as f:
         pickle.dump(out_genes,f)
 
     # to open 
