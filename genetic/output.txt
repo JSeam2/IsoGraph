@@ -1,0 +1,314 @@
+Start Program
+Seed Population
+Time: 2018-05-04 10:07:08.226562 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 0
+Time: 2018-05-04 10:21:05.101947 	 Best Score: 0.6831572382161587 	 Best Acc: 0.6868
+Parent retained, Current Parent:
+Time: 2018-05-04 10:21:05.101983 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 1
+Time: 2018-05-04 10:35:00.694401 	 Best Score: 0.6994664334484725 	 Best Acc: 0.6868
+Parent retained, Current Parent:
+Time: 2018-05-04 10:35:00.694442 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 2
+Time: 2018-05-04 10:48:57.272390 	 Best Score: 0.6767265785345428 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 10:48:57.272428 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 3
+Time: 2018-05-04 11:02:53.392603 	 Best Score: 0.6974341823575554 	 Best Acc: 0.5461
+Parent retained, Current Parent:
+Time: 2018-05-04 11:02:53.392640 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 4
+Time: 2018-05-04 11:16:48.555102 	 Best Score: 0.6767265785345428 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 11:16:48.555140 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 5
+Time: 2018-05-04 11:30:46.637302 	 Best Score: 0.7008722399591847 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 11:30:46.637403 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+
+Child
+Epoch 6
+Time: 2018-05-04 11:44:42.867051 	 Best Score: 0.6767265785345428 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 11:44:42.867092 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 7
+Time: 2018-05-04 11:58:39.460489 	 Best Score: 0.6767265785345428 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 11:58:39.460527 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 8
+Time: 2018-05-04 12:12:39.985256 	 Best Score: 0.699537743443714 	 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 12:12:39.985294 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 9
+Time: 2018-05-04 12:26:36.561476 	 Best Score: 0.7018537324354013 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 12:26:36.561513 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+
+Child
+Epoch 10
+Time: 2018-05-04 12:40:31.683602 	 Best Score: 0.6997363859415785 	 Best Acc: 0.5844
+Parent retained, Current Parent:
+Time: 2018-05-04 12:40:31.683640 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 11
+Time: 2018-05-04 12:54:28.028036 	 Best Score: 0.7044628516836141 	 Best Acc: 0.5317
+Parent retained, Current Parent:
+Time: 2018-05-04 12:54:28.028072 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+
+Child
+Epoch 12
+Time: 2018-05-04 13:08:24.034737 	 Best Score: 0.7008722399591847 	 Best Acc: 0.5317
+Parent retained, Current Parent:
+Time: 2018-05-04 13:08:24.034773 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 13
+Time: 2018-05-04 13:22:22.532833 	 Best Score: 0.7018537324354013 	 Best Acc: 0.5317
+Parent retained, Current Parent:
+Time: 2018-05-04 13:22:22.532868 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 14
+Time: 2018-05-04 13:36:19.042773 	 Best Score: 0.7018537324354013 	 Best Acc: 0.5317
+Parent retained, Current Parent:
+Time: 2018-05-04 13:36:19.042809 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 15
+Time: 2018-05-04 13:50:14.038491 	 Best Score: 0.6880453227471396 	 Best Acc: 0.5019
+Parent retained, Current Parent:
+Time: 2018-05-04 13:50:14.038548 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 16
+Time: 2018-05-04 14:04:09.101359 	 Best Score: 0.7044628516836141 	 Best Acc: 0.5019
+Parent retained, Current Parent:
+Time: 2018-05-04 14:04:09.101397 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 17
+Time: 2018-05-04 14:18:08.445997 	 Best Score: 0.6861740866831898 	 Best Acc: 0.5019
+Parent retained, Current Parent:
+Time: 2018-05-04 14:18:08.446035 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 18
+Time: 2018-05-04 14:32:05.113887 	 Best Score: 0.694600427552458 	 Best Acc: 0.574
+Parent retained, Current Parent:
+Time: 2018-05-04 14:32:05.113921 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 19
+Time: 2018-05-04 14:46:01.567567 	 Best Score: 0.7027916560092337 	 Best Acc: 0.574
+Parent retained, Current Parent:
+Time: 2018-05-04 14:46:01.567602 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+
+Child
+Epoch 20
+Time: 2018-05-04 15:00:00.472163 	 Best Score: 0.7027916560092337 	 Best Acc: 0.574
+Parent retained, Current Parent:
+Time: 2018-05-04 15:00:00.472203 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 21
+Time: 2018-05-04 15:13:57.479409 	 Best Score: 0.6816499745620812 	 Best Acc: 0.574
+Parent retained, Current Parent:
+Time: 2018-05-04 15:13:57.479450 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 22
+Time: 2018-05-04 15:27:53.200257 	 Best Score: 0.7027916560092337 	 Best Acc: 0.574
+Parent retained, Current Parent:
+Time: 2018-05-04 15:27:53.200293 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 23
+Time: 2018-05-04 15:41:46.913255 	 Best Score: 0.6884207453416927 	 Best Acc: 0.5596
+Parent retained, Current Parent:
+Time: 2018-05-04 15:41:46.913291 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 24
+Time: 2018-05-04 15:55:43.085732 	 Best Score: 0.694600427552458 	 Best Acc: 0.6001
+Parent retained, Current Parent:
+Time: 2018-05-04 15:55:43.085768 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 25
+Time: 2018-05-04 16:09:40.124995 	 Best Score: 0.6884207453416927 	 Best Acc: 0.6001
+Parent retained, Current Parent:
+Time: 2018-05-04 16:09:40.125031 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 26
+Time: 2018-05-04 16:23:36.645528 	 Best Score: 0.6773620235634886 	 Best Acc: 0.6001
+Parent retained, Current Parent:
+Time: 2018-05-04 16:23:36.645568 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 27
+Time: 2018-05-04 16:37:32.142888 	 Best Score: 0.6961672759633252 	 Best Acc: 0.5623
+Parent retained, Current Parent:
+Time: 2018-05-04 16:37:32.142923 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+
+Child
+Epoch 28
+Time: 2018-05-04 16:51:33.288739 	 Best Score: 0.7040728655414216 	 Best Acc: 0.6751
+Parent retained, Current Parent:
+Time: 2018-05-04 16:51:33.288775 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 29
+Time: 2018-05-04 17:05:29.894582 	 Best Score: 0.6789159348018509 	 Best Acc: 0.6751
+Parent retained, Current Parent:
+Time: 2018-05-04 17:05:29.894621 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 30
+Time: 2018-05-04 17:19:26.100619 	 Best Score: 0.713922008493994 	 	Best Acc: 0.5033
+Parent retained, Current Parent:
+Time: 2018-05-04 17:19:26.100656 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 31
+Time: 2018-05-04 17:33:20.838977 	 Best Score: 0.713922008493994 	 	Best Acc: 0.4971
+Parent retained, Current Parent:
+Time: 2018-05-04 17:33:20.839039 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 32
+Time: 2018-05-04 17:47:15.754411 	 Best Score: 0.7098258094778367 	 Best Acc: 0.5033
+Parent retained, Current Parent:
+Time: 2018-05-04 17:47:15.754449 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 33
+Time: 2018-05-04 18:01:15.163150 	 Best Score: 0.713922008493994 	 	Best Acc: 0.5033
+Parent retained, Current Parent:
+Time: 2018-05-04 18:01:15.163185 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 34
+Time: 2018-05-04 18:15:10.479470 	 Best Score: 0.7098258094778367 	 Best Acc: 0.5033
+Parent retained, Current Parent:
+Time: 2018-05-04 18:15:10.479509 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 35
+Time: 2018-05-04 18:29:06.419727 	 Best Score: 0.713922008493994 	 	Best Acc: 0.5033
+Parent retained, Current Parent:
+Time: 2018-05-04 18:29:06.419764 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 36
+Time: 2018-05-04 18:43:01.962922 	 Best Score: 0.6983910484988046 	 Best Acc: 0.5931
+Parent retained, Current Parent:
+Time: 2018-05-04 18:43:01.962954 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 37
+Time: 2018-05-04 18:56:59.456895 	 Best Score: 0.6890703050357688 	 Best Acc: 0.5931
+Parent retained, Current Parent:
+Time: 2018-05-04 18:56:59.456933 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 38
+Time: 2018-05-04 19:10:59.867311 	 Best Score: 0.6890703050357688 	 Best Acc: 0.5954
+Parent retained, Current Parent:
+Time: 2018-05-04 19:10:59.867349 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 39
+Time: 2018-05-04 19:25:00.269171 	 Best Score: 0.6890703050357688 	 Best Acc: 0.5954
+Parent retained, Current Parent:
+Time: 2018-05-04 19:25:00.269210 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 40
+Time: 2018-05-04 19:38:59.909743 	 Best Score: 0.695327994154425 	 Best Acc: 0.5599
+Parent retained, Current Parent:
+Time: 2018-05-04 19:38:59.909779 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 41
+Time: 2018-05-04 19:52:56.233560 	 Best Score: 0.722934555661877 	 Best Acc: 0.5599
+Parent retained, Current Parent:
+Time: 2018-05-04 19:52:56.233597 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 42
+Time: 2018-05-04 20:06:52.333450 	 Best Score: 0.722934555661877 	 	Best Acc: 0.5954
+Parent retained, Current Parent:
+Time: 2018-05-04 20:06:52.333484 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 43
+Time: 2018-05-04 20:20:49.681320 	 Best Score: 0.7058506027182035 	 Best Acc: 0.4944
+Parent retained, Current Parent:
+Time: 2018-05-04 20:20:49.681356 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 44
+Time: 2018-05-04 20:34:45.075965 	 Best Score: 0.6944028262951216 	 Best Acc: 0.563
+Parent retained, Current Parent:
+Time: 2018-05-04 20:34:45.076001 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 45
+Time: 2018-05-04 20:48:41.291817 	 Best Score: 0.6944028262951216 	 Best Acc: 0.563
+Parent retained, Current Parent:
+Time: 2018-05-04 20:48:41.291854 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 46
+Time: 2018-05-04 21:02:37.008459 	 Best Score: 0.6853622358753287 	 Best Acc: 0.563
+Parent retained, Current Parent:
+Time: 2018-05-04 21:02:37.008496 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 47
+Time: 2018-05-04 21:16:32.648633 	 Best Score: 0.700078744486583 	 	Best Acc: 0.563
+Parent retained, Current Parent:
+Time: 2018-05-04 21:16:32.648669 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 48
+Time: 2018-05-04 21:30:27.166633 	 Best Score: 0.700078744486583 	 	Best Acc: 0.563
+Parent retained, Current Parent:
+Time: 2018-05-04 21:30:27.166671 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 49
+Time: 2018-05-04 21:44:24.482873 	 Best Score: 0.6782684203833673 	 Best Acc: 0.563
+Parent retained, Current Parent:
+Time: 2018-05-04 21:44:24.482909 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868
+
+Child
+Epoch 50
+Time: 2018-05-04 21:58:25.061494 	 Best Score: 0.6895763162394956 	 Best Acc: 0.563
+Parent retained, Current Parent:
+Time: 2018-05-04 21:58:25.061532 	 Best Score: 0.6737689415452086 	 Best Acc: 0.6868

@@ -167,8 +167,8 @@ def get_fitness(genes, data):
         circuit = make_circuit(gene, False)
 
         for index, row in data.iterrows():
-            if index % 2500 == 0:
-                print("running {}".format(index))
+            #if index % 2500 == 0:
+            #    print("running {}".format(index))
 
             # add a |0> to the last qubit as we will use
             # it for measurements
@@ -288,9 +288,10 @@ if __name__ == "__main__":
     print("Start Program")
     df = pd.read_pickle("3_node_10000.pkl")
 
+    print("Depth = 10")
     out_genes = get_best(N=3,
              data = df,
-             num_epoch = 100,
+             num_epoch = 50,
              population_size = 20,
              take_best = 5,
              depth = 10,
@@ -299,9 +300,11 @@ if __name__ == "__main__":
     with open("save1.pkl", "wb") as f:
         pickle.dump(out_genes,f)
 
+    print("==========================")
+    print("Depth = 15")
     out_genes = get_best(N=3,
              data = df,
-             num_epoch = 100,
+             num_epoch = 50,
              population_size = 20,
              take_best = 5,
              depth = 15,
@@ -310,9 +313,12 @@ if __name__ == "__main__":
     with open("save2.pkl", "wb") as f:
         pickle.dump(out_genes,f)
 
+    print("==========================")
+    print("Depth = 20")
+
     out_genes = get_best(N=3,
              data = df,
-             num_epoch = 100,
+             num_epoch = 50,
              population_size = 20,
              take_best = 5,
              depth = 20,
@@ -321,9 +327,12 @@ if __name__ == "__main__":
     with open("save3.pkl", "wb") as f:
         pickle.dump(out_genes,f)
 
+    print("==========================")
+    print("Depth = 25")
+
     out_genes = get_best(N=3,
              data = df,
-             num_epoch = 100,
+             num_epoch = 50,
              population_size = 20,
              take_best = 5,
              depth = 25,
@@ -332,9 +341,12 @@ if __name__ == "__main__":
     with open("save4.pkl", "wb") as f:
         pickle.dump(out_genes,f)
 
+    print("==========================")
+    print("Depth = 30")
+
     out_genes = get_best(N=3,
              data = df,
-             num_epoch = 100,
+             num_epoch = 50,
              population_size = 20,
              take_best = 5,
              depth = 30,
